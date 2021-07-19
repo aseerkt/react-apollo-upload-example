@@ -1,0 +1,17 @@
+{
+  "name": "server-upload",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Aseer KT",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-server-express": "^3.0.1",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "graphql-upload": "^12.0.0",
+    "stream": "^0.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
