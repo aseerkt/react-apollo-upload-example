@@ -4,6 +4,10 @@
   "license": "MIT",
   "author": "Aseer KT",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "apollo-server-express": "^3.0.1",
     "express": "^4.17.1",
