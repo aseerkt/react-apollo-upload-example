@@ -30,8 +30,10 @@ const resolvers = {
   Upload: GraphQLUpload,
   Query: {
     getPhotos: async function () {
-      const files = fs.readdirSync('files');
-      return files.map((n) => `http://localhost:5000/files/${n}`);
+      if (fs.existsSync('files')) {
+        const files = fs.readdirSync('files');
+        return files.map((n) => `http://localhost:5000/files/${n}`);
+      } else return [];
     },
   },
   Mutation: {
@@ -74,7 +76,6 @@ async function startServer() {
     resolvers,
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground],
   });
-  await server.start();
 
   const app = express();
 
@@ -82,6 +83,8 @@ async function startServer() {
   app.use(graphqlUploadExpress());
 
   app.use('/files', express.static(path.join(__dirname, 'files')));
+
+  await server.start();
 
   server.applyMiddleware({ app });
 
