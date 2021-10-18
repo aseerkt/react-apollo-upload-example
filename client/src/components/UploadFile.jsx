@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
-import { GET_PHOTOS_QUERY } from './Files';
+import { GET_FILES_QUERY } from './Files';
 
 const SINGLE_UPLOAD_MUTATION = gql`
   mutation SingleUpload($file: Upload!) {
@@ -26,7 +26,7 @@ function UploadFile() {
     try {
       const res = await uploadRequest({
         variables: { file },
-        refetchQueries: [{ query: GET_PHOTOS_QUERY }],
+        refetchQueries: [{ query: GET_FILES_QUERY }],
       });
       if (res.data) {
         setMsg('File Upload Success!');

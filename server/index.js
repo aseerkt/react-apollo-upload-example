@@ -18,7 +18,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    getPhotos: [String!]
+    getFiles: [String!]
   }
 
   type Mutation {
@@ -29,7 +29,7 @@ const typeDefs = gql`
 const resolvers = {
   Upload: GraphQLUpload,
   Query: {
-    getPhotos: async function () {
+    getFiles: async function () {
       if (fs.existsSync('files')) {
         const files = fs.readdirSync('files');
         return files.map((n) => `http://localhost:5000/files/${n}`);
