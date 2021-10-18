@@ -8,8 +8,7 @@
     "apollo-server-express": "^3.0.1",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
-    "graphql-upload": "^12.0.0",
-    "stream": "^0.0.2"
+    "graphql-upload": "^12.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
