@@ -9,6 +9,7 @@ export const GET_PHOTOS_QUERY = gql`
 
 function Files() {
   const { data, loading, error } = useQuery(GET_PHOTOS_QUERY);
+
   if (loading) return <h1>loading files...</h1>;
   if (error) return <p>{error.message}</p>;
 
@@ -21,6 +22,7 @@ function Files() {
           </a>
         </div>
       ))}
+      {!data?.getPhotos.length && <p>No files uploaded yet</p>}
     </div>
   );
 }

@@ -29,7 +29,8 @@ function UploadFile() {
         refetchQueries: [{ query: GET_PHOTOS_QUERY }],
       });
       if (res.data) {
-        setMsg('File upload!');
+        setMsg('File Upload Success!');
+        setFile(null);
         setTimeout(() => setMsg(''), 3000);
       }
     } catch (err) {
@@ -46,7 +47,7 @@ function UploadFile() {
         onChange={(e) => setFile(e.target.files[0])}
       />
       <button onClick={uploadFile}>Upload</button>
-      <p>{loading && 'Loading...'}</p>
+      <p>{loading && 'Uploading...'}</p>
       <p>{error?.message}</p>
     </div>
   );

@@ -1,7 +1,7 @@
 import logo from './logo.svg';
-import './App.css';
 import UploadFile from './components/UploadFile';
 import Files from './components/Files';
+import './App.css';
 
 function App() {
   return (
@@ -11,7 +11,9 @@ function App() {
         <h1>Apollo Upload Example</h1>
       </header>
       <section>
+        {/* Component which contains upload form */}
         <UploadFile />
+        {/* Component which lists the links to the uploaded files */}
         <Files />
       </section>
     </div>
