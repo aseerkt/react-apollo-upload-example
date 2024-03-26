@@ -1,0 +1,12 @@
+{
+  "name": "react-apollo-upload-example",
+  "scripts": {
+    "client:install": "cd client pnpm i",
+    "server:install": "cd server pnpm i",
+    "install": "pnpm client:install && pnpm server:install",
+    "dev": "turbo dev"
+  },
+  "devDependencies": {
+    "turbo": "^1.13.0"
+  }
+}
