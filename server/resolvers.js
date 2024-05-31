@@ -1,5 +1,11 @@
 import { randomBytes } from "crypto";
-import { createWriteStream, existsSync, mkdirSync, readdirSync } from "fs";
+import {
+  createWriteStream,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  unlink,
+} from "fs";
 import GraphQLUpload from "graphql-upload/GraphQLUpload.mjs";
 import path from "path";
 
@@ -20,12 +26,15 @@ export const resolvers = {
 
       const uploadPath = "files";
       const uploadFileName = `${randomBytes(6).toString("hex")}_${filename}`;
+      const uploadFileUrl = path.join(uploadPath, uploadFileName);
 
       mkdirSync(uploadPath, { recursive: true });
 
-      const output = createWriteStream(path.join(uploadPath, uploadFileName));
+      const output = createWriteStream(uploadFileUrl);
 
       stream.pipe(output);
+
+      stream.on("error", (error) => output.destroy(error));
 
       await new Promise(function (resolve, reject) {
         output.on("close", () => {
@@ -35,7 +44,9 @@ export const resolvers = {
 
         output.on("error", (err) => {
           console.log(err);
-          reject(err);
+          unlink(uploadFileUrl, () => {
+            reject(err);
+          });
         });
       });
 
