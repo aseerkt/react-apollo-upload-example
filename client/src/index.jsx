@@ -1,16 +1,10 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { loadDevMessages, loadErrorMessages } from "@apollo/client/dev";
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-if (import.meta.env.NODE_ENV !== "production") {
-  // Adds messages only in a dev environment
-  loadDevMessages();
-  loadErrorMessages();
-}
 
 // `uploadLink` is a terminating link
 const uploadLink = createUploadLink({

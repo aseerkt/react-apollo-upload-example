@@ -3,24 +3,6 @@ import { createWriteStream, existsSync, mkdirSync, readdirSync } from "fs";
 import GraphQLUpload from "graphql-upload/GraphQLUpload.mjs";
 import path from "path";
 
-export const typeDefs = `#graphql
-  scalar Upload
-
-  type File {
-    filename: String!
-    mimetype: String!
-    encoding: String!
-  }
-
-  type Query {
-    getFiles: [String!]
-  }
-
-  type Mutation {
-    singleUpload(file: Upload!): File!
-  }
-`;
-
 export const resolvers = {
   Upload: GraphQLUpload,
   Query: {
